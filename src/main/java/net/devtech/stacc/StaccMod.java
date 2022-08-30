@@ -4,7 +4,6 @@ import java.util.Optional;
 import java.util.Properties;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
-import java.util.logging.Logger;
 
 import net.devtech.stacc.mixin.ItemAccess;
 
@@ -17,30 +16,30 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.profiler.Profiler;
 import net.minecraft.util.registry.Registry;
 
-import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
-import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
-import net.fabricmc.loader.api.FabricLoader;
+import net.minecraftforge.fml.common.Mod;
 
-@Mod
+@Mod(StaccMod.MODID)
 public interface StaccMod {
+
+
 	int DEFAULT = 1_000_000_000;
+	String MODID = "stacc";
 
 	static void onInitialize() {
 		Identifier val = new Identifier("stacc", "stacc");
-		ResourceManagerHelper.get(ResourceType.SERVER_DATA)
-		                     .registerReloadListener(new IdentifiableResourceReloadListener() {
-			                     @Override
+		ResourceManager.Empty.valueOf(String.valueOf(ResourceType.SERVER_DATA))
+		                     .containsResource(new ResourceReloadListener() {
 			                     public Identifier getFabricId() {
 				                     return val;
 			                     }
 
 			                     @Override
-			                     public CompletableFuture<Void> reload(ResourceReloadListener.Synchronizer synchronizer,
-					                     ResourceManager manager,
-					                     Profiler prepareProfiler,
-					                     Profiler applyProfiler,
-					                     Executor prepareExecutor,
-					                     Executor applyExecutor) {
+			                     public CompletableFuture<Void> reload(Synchronizer synchronizer,
+																	   ResourceManager manager,
+																	   Profiler prepareProfiler,
+																	   Profiler applyProfiler,
+																	   Executor prepareExecutor,
+																	   Executor applyExecutor) {
 				                     return CompletableFuture.supplyAsync(() -> {
 					                     System.out.println("[Stacc] Loading Properties...");
 					                     Properties properties = new Properties();
@@ -89,7 +88,7 @@ public interface StaccMod {
 					                     }
 				                     });
 			                     }
-		                     });
+		                     }.getFabricId());
 		System.out.println("[Stacc] initialized!");
 	}
 

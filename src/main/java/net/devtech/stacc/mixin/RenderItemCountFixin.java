@@ -1,8 +1,10 @@
 package net.devtech.stacc.mixin;
 
 import net.devtech.stacc.ItemCountRenderHandler;
+
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -14,6 +16,8 @@ import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
+
+
 
 @OnlyIn(Dist.CLIENT)
 @Mixin (ItemRenderer.class)

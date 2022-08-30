@@ -7,6 +7,7 @@ import net.minecraft.inventory.Inventory;
 
 import static net.devtech.stacc.Stacc.fastbenchLoaded;
 
+
 @Mixin(CraftingInventory.class)
 public abstract class CraftingInventoryMixin_LimitStackSize implements Inventory {
 	private static final int STACC_SIZE_LIMIT;

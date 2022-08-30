@@ -1,18 +1,19 @@
 {
   "required": true,
   "package": "net.devtech.stacc.mixin",
-  "compatibilityLevel": "JAVA_16",
+  "compatibilityLevel": "JAVA_8",
   "mixins": [
     "ClearCommandBugFixin",
     "ClearCommandBugFixin$InventoriesFixin",
-    "CraftingInventoryMixin_LimitStackSize",
     "CreativeDesyncFixin",
     "DesktopHandSplayedDuplicationFixin",
-    "DesyncFixin",
     "InventoryMixin",
+    "ItemAccess",
     "OOMFixin",
-    "PlayerInventoryMixin",
-    "SerializationFixin"
+    "SerializationFixin",
+    "stackables.AnvilDesktopHandSplayedFixin",
+    "stackables.BookConsumeFixin",
+    "stackables.EnchantingFixin"
   ],
   "client": [
     "RenderItemCountFixin"

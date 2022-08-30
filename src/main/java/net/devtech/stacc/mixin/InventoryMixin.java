@@ -1,6 +1,5 @@
 package net.devtech.stacc.mixin;
 
-import net.devtech.stacc.StaccGlobals;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
@@ -17,6 +16,6 @@ public interface InventoryMixin {
 	 */
 	@Overwrite
 	default int getMaxCountPerStack() {
-		return StaccGlobals.getMax();
+		return Integer.MAX_VALUE;
 	}
 }

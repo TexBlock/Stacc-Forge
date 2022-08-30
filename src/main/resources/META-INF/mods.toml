@@ -1,0 +1,14 @@
+modLoader="javafml"
+loaderVersion="[39,)"
+license="CC0-1.0"
+
+[[mods]]
+modId="stacc"
+version="${version}"
+displayName="Stacc-Forge"
+logoFile="icon.png"
+description='''
+
+'''
+credits="Devan-Kerman,TexTrue"
+authors="TexTrueStudio"

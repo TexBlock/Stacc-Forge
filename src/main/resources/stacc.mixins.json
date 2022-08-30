@@ -1,0 +1,24 @@
+{
+  "required": true,
+  "package": "net.devtech.stacc.mixin",
+  "compatibilityLevel": "JAVA_16",
+  "mixins": [
+    "BundleItemMixin",
+    "ClearCommandBugFixin",
+    "ClearCommandBugFixin$InventoriesFixin",
+    "CraftingInventoryMixin_LimitStackSize",
+    "CreativeDesyncFixin",
+    "DesktopHandSplayedDuplicationFixin",
+    "DesyncFixin",
+    "InventoryMixin",
+    "OOMFixin",
+    "PlayerInventoryMixin",
+    "SerializationFixin"
+  ],
+  "client": [
+    "RenderItemCountFixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

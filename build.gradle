@@ -1,0 +1,73 @@
+plugins {
+    //id 'fabric-loom' version '0.12-SNAPSHOT'
+    id 'dev.architectury.loom' version '0.12.0-SNAPSHOT'
+    id 'maven-publish'
+}
+
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+
+archivesBaseName = project.archives_base_name
+version = project.mod_version
+group = project.maven_group
+
+loom {
+    forge {
+        mixinConfigs = [
+                "stacc.mixins.json"
+        ]
+    }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    //modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    forge "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+}
+
+processResources {
+    inputs.property "version", project.version
+    //filesMatching("fabric.mod.json") {
+    filesMatching("META-INF/mods.toml") {
+        expand "version": project.version
+    }
+}
+
+java {
+    withSourcesJar()
+}
+
+jar {
+    from "LICENSE"
+}
+
+// configure the maven publication
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            // add all the jars that should be included when publishing to maven
+            artifact(remapJar) {
+                builtBy remapJar
+            }
+            artifact(sourcesJar) {
+                builtBy remapSourcesJar
+            }
+        }
+    }
+    // select the repositories you want to publish to
+    repositories {
+        maven {
+            /*
+            def mavenUrl = project.hasProperty('maven_url') ? project.property('maven_url') : ""
+            url mavenUrl
+            if (mavenUrl.startsWith("http")) {
+                credentials {
+                    username project.hasProperty('maven_username') ? project.property('maven_username') : ""
+                    password project.hasProperty('maven_password') ? project.property('maven_password') : ""
+                }
+            }
+             */
+        }
+    }
+}

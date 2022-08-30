@@ -1,6 +1,9 @@
 name: Java CI with Gradle
 
-on: [ pull_request, push ]
+push:
+  branches: [ "1.16.x-forge/dev" ]
+  pull_request:
+    branches: [ "1.16.x-forge/dev" ]
 
 jobs:
   build:

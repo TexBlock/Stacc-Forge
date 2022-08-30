@@ -21,8 +21,8 @@ import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.loader.api.FabricLoader;
 
-
-public interface Stacc {
+@Mod
+public interface StaccMod {
 	int DEFAULT = 1_000_000_000;
 
 	static void onInitialize() {
